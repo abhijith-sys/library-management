@@ -1,1 +1,64 @@
-<p>login works!</p>
+<div class="login-main-container">
+    <div class="login-container">
+        <div class="login-container-left">
+         
+
+            <h2>Welcome back</h2>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                
+
+                <div class="form-group">
+                    <label for="role">Email Address</label>
+                    <input type="email" formControlName="email" placeholder="Email Address" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && (f['email'].errors && f['email'].errors['required'] || f['email'].errors && f['email'].errors['email']) }">
+                    @if (submitted && (f['email'].errors && f['email'].errors['required'])) {
+                    <div class="invalid-feedback">Email is required</div>
+                    }
+                    @if (submitted && (f['email'].errors && f['email'].errors['email'])) {
+                    <div class="invalid-feedback">Invalid email format</div>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Password</label>
+                    <input type="password" formControlName="password" placeholder="Password" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && (f['password'].errors && f['password'].errors['required'] || f['password'].errors && f['password'].errors['minlength'] || f['password'].errors && f['password'].errors['maxlength']) }">
+                    @if (submitted && (f['password'].errors && f['password'].errors['required'])) {
+                    <div class="invalid-feedback">Password is required</div>
+                    }
+                    @if (submitted && (f['password'].errors && f['password'].errors['minlength'])) {
+                    <div class="invalid-feedback">Password must be at least 6 characters</div>
+                    }
+                    @if (submitted && (f['password'].errors && f['password'].errors['maxlength'])) {
+                    <div class="invalid-feedback">Password must not exceed 40 characters</div>
+                    }
+                </div>
+
+             
+
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select formControlName="role" id="role" class="form-control">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+
+                
+
+                <button type="submit" class="btn btn-primary" routerLink="dashboard">Sign Up</button>
+            </form>
+            <div class="signIn-text-container">
+                <h4>Don't have an account yet?
+                </h4>
+                <h4 class="signIn-text" routerLink="" > Sign up</h4>
+            </div>
+
+        </div>
+        <div class="login-container-right">
+           
+            <img src="{{ svgPath }}" alt="Example SVG">
+
+        </div>
+    </div>
+</div>

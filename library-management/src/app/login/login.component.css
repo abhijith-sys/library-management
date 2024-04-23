@@ -1,0 +1,113 @@
+.login-main-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+}
+
+.login-container {
+    display: flex;
+    background-color: #949eff;
+    border-radius: 20px;
+  min-width: 60%;
+    overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.login-container-left {
+    flex: 55%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.login-container-left .slogan {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.login-container-right {
+    flex: 45%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: white;
+}
+
+.login-container-left form {
+    width: 100%;
+
+}
+
+.login-container-left .form-group {
+    margin-bottom: 10px;
+}
+
+.login-container-left input[type="text"],
+.login-container-left input[type="email"],
+.login-container-left input[type="password"],
+.login-container-left select {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #949eff;
+    border-radius: 20px;
+    font-size: 14px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.login-container-left .terms {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-container-left .terms input[type="checkbox"] {
+    margin-right: 10px;
+    border: 1px solid #949eff;
+    cursor: pointer;
+}
+
+.login-container-left button {
+    background-color: #224cd8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.login-container-left button:hover {
+    background-color: #5c5c5c;
+}
+
+.error {
+    color: red;
+    font-size: 0.5em;
+}
+
+
+.signIn-text-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.signIn-text{
+ color:  #4f5fe7;   
+ cursor: pointer;
+}

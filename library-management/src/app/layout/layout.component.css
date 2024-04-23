@@ -1,0 +1,14 @@
+.main-layout-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #949eff;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.main-layout-subcontainer{
+    background-color: blue; 
+    flex: 90%;
+    width: 100px;
+}

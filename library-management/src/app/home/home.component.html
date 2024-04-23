@@ -1,0 +1,27 @@
+<div class="home-container">
+    <div class="home-container-top">
+        <div class="add-button">
+            <mat-icon  class="add-button-icon" >add_circle</mat-icon>
+            Add Books</div>
+    </div>
+
+
+    <div class="home-container-sub">
+        @for (book of books; track book.id) {
+            <div class="book-card">
+                <img class="book-image" [src]="book.image" alt="Book Image">
+                <div class="book-details">
+                    <h2 class="book-title">{{ book.title }}</h2>
+                    <p class="book-author">{{ book.author }}</p>
+                    <p class="book-description">{{ book.description }}</p>
+                    <p class="book-info">Release Date: <span class="release-date">{{ book.releaseDate }}</span></p>
+                    <p class="book-info">Availability: <span class="availability">{{ book.available ? 'Available' : 'Not
+                            Available' }}</span></p>
+                    <button class="reserve-button">Reserve</button>
+                </div>
+            </div>
+            }
+    </div>
+   
+
+</div>
