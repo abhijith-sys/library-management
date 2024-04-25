@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
       // Check if userId is present
       if (this.userId) {
         const result = this.userListStore.findOne(Number(this.userId));
-        console.log(result);
+       
 
         if (result) {
           this.user = result

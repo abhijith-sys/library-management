@@ -29,8 +29,8 @@ import { SharedModule } from '../../shared/shared.module';
 })
 export class SignupComponent {
   Store = inject(userStore);
-  userListStore=inject(userListStore);
-  
+  userListStore = inject(userListStore);
+
 
   svgPath: string = '../../assets/images/Manreading-pana.svg';
 
@@ -44,7 +44,7 @@ export class SignupComponent {
   ngOnInit(): void {
     this.form = this.formBuilder.group(
       {
-        fullname: ['', [Validators.required, Validators.minLength(6),Validators.maxLength(20)]],
+        fullname: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
         email: ['', [Validators.required, Validators.email]],
         password: [
           '',
@@ -82,7 +82,7 @@ export class SignupComponent {
         this.router.navigate(['/home']);
       },
       error: (error) => {
-        alert('Registration failed:'+ error);
+        alert('Registration failed:' + error);
         // Handle error response
       }
     });

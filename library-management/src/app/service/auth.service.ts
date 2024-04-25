@@ -21,7 +21,7 @@ export class AuthService {
   isLoggedIn() {
     //const user = this.Store.user()
     this.user = JSON.parse(localStorage.getItem("user") ?? "")
-    console.log(this.user,",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
+
 
     if (this.user.accessToken.length>2) {
       return true;

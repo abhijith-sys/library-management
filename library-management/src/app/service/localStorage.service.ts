@@ -40,10 +40,10 @@ export class LocalStorageService {
     setLocalBooks() {
         try {
             const localBooksData = localStorage.getItem("books");
-            console.log(localBooksData);
+            
             if (localBooksData) {
                 const parsedBooksData: Book[] = JSON.parse(localBooksData);
-                console.log(parsedBooksData);
+                
                 this.bookStore.setBooks(parsedBooksData);
             }
         } catch (error) {

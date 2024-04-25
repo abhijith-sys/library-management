@@ -33,23 +33,14 @@ export class BookDetailsComponent {
   constructor(private router: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.currentuserRole = this.AuthService.getCurrentUserRole();
-    // Retrieving the userId parameter from the route
     this.route.paramMap.subscribe(params => {
-      // Accessing the userId parameter
-
       this.bookId = params.get('id') ?? '';
-      // Check if userId is present
       if (this.bookId) {
         const result = this.bookStore.findOne(this.bookId)
         if (result) {
           this.book = result;
-          console.log(result);
-
-
-
         }
       } else {
-        // Handle the case where userId is not present
         console.log('User ID not provided');
       }
     });
@@ -60,14 +51,10 @@ export class BookDetailsComponent {
     this.router.navigate(['/book-form', id]);
   }
   borrowBook(id: String) {
-    // Navigate to the edit form
     this.router.navigate(['/book-form', id]);
   }
 
   redirectToUserDetails(userId: number) {
-   
-    
-    // Navigate to the user details page, passing the userId as a route parameter
     this.router.navigate(['/profile', userId]);
   }
 

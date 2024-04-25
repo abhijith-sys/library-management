@@ -52,17 +52,12 @@ export class HomeComponent {
         alert("borrow limit exceeded")
         // User cannot borrow more books until the borrowed ones are returned
       }else{
+        alert("borrow book success")
         const book = this.bookStore.findOne(id);
         if(book){
-          const temphistory = { bookId: id, title: book.title, status: "borrowed", takenDate:new Date(), returnedDate: "" };
-          
+          const temphistory = { bookId: id, title: book.title, status: "borrowed", takenDate:new Date(), returnedDate: "" }; 
         }
-        
-       
-
       }
-
-      // this.router.navigate(['/book-form', id]);
     } else {
       console.log("user not found")
     }

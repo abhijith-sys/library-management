@@ -37,12 +37,8 @@ export class BookFormComponent {
   constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // Retrieving the userId parameter from the route
     this.route.paramMap.subscribe(params => {
-      // Accessing the userId parameter
-
       this.bookId = params.get('id') ?? '';
-      // Check if userId is present
       if (this.bookId) {
         const result = this.bookStore.findOne(this.bookId)
         if (result) {
@@ -50,7 +46,7 @@ export class BookFormComponent {
           this.book = result
         }
       } else {
-        // Handle the case where userId is not present
+      
         console.log('User ID not provided');
       }
     });
@@ -86,10 +82,6 @@ export class BookFormComponent {
       alert("Book added successfully")
       this.bookStore.AddBooks(this.book)
     }
-
-
-
-    this.router.navigate(['/home']);
-    // Simulate sending data to a server (replace with actual API call)
+    this.router.navigate(['/home']); 
   }
 }

@@ -6,11 +6,8 @@
         <p><strong>Max Borrow limit:</strong> {{ user.maxBookLimit }}</p>
         
     </div>
-    
     <button mat-raised-button color="primary" (click)="editProfile()" class="btn">Edit Profile</button>
     <button mat-raised-button color="primary" (click)="logout()" class="btn">Logout</button>
-
-    
     <h3>History</h3>
     <table mat-table [dataSource]="user.bookHistory" class="mat-elevation-z8">
         <!-- Define table columns -->

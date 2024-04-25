@@ -45,7 +45,7 @@ export class ProfileFormComponent {
   constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.localService.setLocalUser() 
+    this.localService.setLocalUser()
     this.localService.setLocalBooks()
     this.localService.setLocalUserList()
     this.currentuserRole = this.AuthService.getCurrentUserRole();
@@ -53,25 +53,25 @@ export class ProfileFormComponent {
     this.route.paramMap.subscribe(params => {
       // Accessing the userId parameter
 
-      this.userId =Number(params.get('id'))  ?? 0;
+      this.userId = Number(params.get('id')) ?? 0;
       // Check if userId is present
       if (this.userId) {
         const result = this.userListStore.findOne(this.userId)
         if (result) {
-        
+
           this.user = result
         }
       } else {
         const result = this.userListStore.findByEmail(this.userStore.user().email)
         if (result) {
-        
+
           this.user = result
-        }else{
-          this.user.name=this.userStore.user().name;
-          this.user.email=this.userStore.user().email;
+        } else {
+          this.user.name = this.userStore.user().name;
+          this.user.email = this.userStore.user().email;
         }
-       
-        
+
+
       }
     });
 
@@ -89,20 +89,12 @@ export class ProfileFormComponent {
   }
 
   onSubmit(): void {
-
     this.submitted = true;
-
     if (this.userForm.invalid) {
       return;
     }
-
- 
-      alert("Details updatd successfully")
-      this.userListStore.updateUser(this.userForm.value, this.user.id)
-  
-
-
-
+    alert("Details updatd successfully")
+    this.userListStore.updateUser(this.userForm.value, this.user.id)
     this.router.navigate(['/profile']);
     // Simulate sending data to a server (replace with actual API call)
   }

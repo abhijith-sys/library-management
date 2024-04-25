@@ -1,12 +1,8 @@
 <div class="login-main-container">
     <div class="login-container">
         <div class="login-container-left">
-         
-
             <h2>Welcome back</h2>
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                
-
                 <div class="form-group">
                     <label for="role">Email Address</label>
                     <input type="email" formControlName="email" placeholder="Email Address" class="form-control"
@@ -33,9 +29,6 @@
                     <div class="invalid-feedback">Password must not exceed 40 characters</div>
                     }
                 </div>
-
-             
-
                 <div class="form-group">
                     <label for="role">Role</label>
                     <select formControlName="role" id="role" class="form-control">
@@ -43,19 +36,16 @@
                         <option value="admin">Admin</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary" >Sign Up</button>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
             <div class="signIn-text-container">
                 <h4>Don't have an account yet?
                 </h4>
-                <h4 class="signIn-text" routerLink="" > Sign up</h4>
+                <h4 class="signIn-text" routerLink=""> Sign up</h4>
             </div>
-
         </div>
         <div class="login-container-right">
-           
             <img src="{{ svgPath }}" alt="Example SVG">
-
         </div>
     </div>
 </div>

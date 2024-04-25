@@ -27,11 +27,7 @@ export class UserListComponent {
 
 
   redirectToUserDetails(userId: number) {
-    console.log("clicked");
-
     // Navigate to the user details page, passing the userId as a route parameter
     this.router.navigate(['/profile', userId]);
-
-
   }
 }
