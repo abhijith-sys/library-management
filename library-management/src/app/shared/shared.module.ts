@@ -7,7 +7,12 @@ import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatFormField } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -19,7 +24,12 @@ import {MatTableModule} from '@angular/material/table';
     MatListModule,
     AsyncPipe,
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginator,
+    MatSort,
+    MatFormField,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   exports: [
     MatSidenavModule,
@@ -30,7 +40,9 @@ import {MatTableModule} from '@angular/material/table';
     MatListModule,
     AsyncPipe,
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginator,
+    MatSort, MatFormField, HttpClientModule,ReactiveFormsModule
   ]
 })
 export class SharedModule { }

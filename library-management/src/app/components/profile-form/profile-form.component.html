@@ -1,0 +1,41 @@
+<div class="signup-main-container">
+    <div class="signup-container">
+      <div class="signup-container-left">
+        <h1 class="slogan">Edit Details</h1>
+      </div>
+      <div class="signup-container-right">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" formControlName="name" id="name" class="form-control"
+                   placeholder="name" [ngClass]="{ 'is-invalid': submitted  && (f['name'].errors && f['name'].errors['required'])}">
+
+            @if (submitted && (f['name'].errors && f['name'].errors['required']) ) {
+              <div class="invalid-feedback">
+                  <div >name is required.</div>
+                 
+              </div>
+            }
+          </div>
+  
+          <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="text" formControlName="email" id="Email" class="form-control"
+                   placeholder="email" [ngClass]="{ 'is-invalid': submitted }">
+                   
+            @if (submitted && f['email'].errors && f['email'].errors['required'] ) {
+              <div class="invalid-feedback">
+                  <div >email is required.</div>
+                 
+              </div>
+            }
+          </div>
+  
+  
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,83 @@
+<div class="signup-main-container">
+    <div class="signup-container">
+      <div class="signup-container-left">
+        @if(this.editStatus){
+          <h1 class="slogan">Edit Book</h1>
+        }@else{
+          <h1 class="slogan">Add a New Book</h1>
+        }
+       
+      </div>
+      <div class="signup-container-right">
+        <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" formControlName="title" id="title" class="form-control"
+                   placeholder="Enter book title" [ngClass]="{ 'is-invalid': submitted  && (f['title'].errors && f['title'].errors['required'])}">
+
+            @if (submitted && (f['title'].errors && f['title'].errors['required']) ) {
+              <div class="invalid-feedback">
+                  <div >Title is required.</div>
+                 
+              </div>
+            }
+          </div>
+  
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" formControlName="author" id="author" class="form-control"
+                   placeholder="Enter author's name" [ngClass]="{ 'is-invalid': submitted }">
+                   
+            @if (submitted && f['author'].errors && f['author'].errors['required'] ) {
+              <div class="invalid-feedback">
+                  <div >author is required.</div>
+                 
+              </div>
+            }
+          </div>
+  
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea formControlName="description" id="description" class="form-control"
+                      rows="5" placeholder="Enter book description" [ngClass]="{ 'is-invalid': submitted }"></textarea>
+                      @if (submitted && f['description'].errors && f['description'].errors['required'] ) {
+                        <div class="invalid-feedback">
+                            <div >description is required.</div>
+                           
+                        </div>
+                      }
+          </div>
+  
+          <div class="form-group">
+            <label for="releaseDate">Release Date</label>
+            <input type="date" formControlName="releaseDate" id="releaseDate" class="form-control"
+                   placeholder="Enter release date (YYYY-MM-DD)" [ngClass]="{ 'is-invalid': submitted }">
+                   @if (submitted && f['releaseDate'].errors && f['releaseDate'].errors['required'] ) {
+                    <div class="invalid-feedback">
+                        <div >releaseDate is required.</div>
+                       
+                    </div>
+                  }
+          </div>
+  
+          <div class="form-group">
+            <label for="image">Image URL</label>
+            <input type="text" formControlName="image" id="image" class="form-control"
+                   placeholder="Enter image URL" [ngClass]="{ 'is-invalid': submitted && (f['image'].errors && f['image'].errors['required'] ) }">
+                   @if (submitted && (f['image'].errors && f['image'].errors['required'] )) {
+                    <div class="invalid-feedback">
+                        <div >image is required.</div>
+                       
+                    </div>
+                  }
+          </div>
+  
+
+  
+          <button type="submit" class="btn btn-primary">submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

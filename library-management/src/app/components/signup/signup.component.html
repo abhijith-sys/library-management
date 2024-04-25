@@ -1,0 +1,104 @@
+<div class="signup-main-container">
+    <div class="signup-container">
+        <div class="signup-container-left">
+            <h1 class="slogan">Empowering Readers, Learning from the Best: Register Today!</h1>
+            <img src="{{ svgPath }}" class="image"  alt="Example SVG">
+        </div>
+        <div class="signup-container-right">
+            <h3  >Create Account</h3>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="text" formControlName="fullname" placeholder="Full Name" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['fullname'].errors }">
+                    @if (submitted && f['fullname'].errors) {
+                    <div class="invalid-feedback">
+
+                        @if(f['fullname'].errors['required']){
+                        <div>Full Name is required.</div>
+                        }
+                        @if(f['fullname'].errors['minlength']){
+                        <div>Full Name must be at least 6 characters.</div>
+                        }
+                        @if(f['fullname'].errors['maxlength']){
+                        <div>Full Name must not exceed 20 characters.</div>
+                        }
+
+
+                    </div>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <input type="email" formControlName="email" placeholder="Email Address" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && (f['email'].errors && f['email'].errors['required'] || f['email'].errors && f['email'].errors['email']) }">
+                    @if (submitted && (f['email'].errors && f['email'].errors['required'])) {
+                    <div class="invalid-feedback">Email is required</div>
+                    }
+                    @if (submitted && (f['email'].errors && f['email'].errors['email'])) {
+                    <div class="invalid-feedback">Invalid email format</div>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <input type="password" formControlName="password" placeholder="Password" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && (f['password'].errors && f['password'].errors['required'] || f['password'].errors && f['password'].errors['minlength'] || f['password'].errors && f['password'].errors['maxlength']) }">
+                    @if (submitted && (f['password'].errors && f['password'].errors['required'])) {
+                    <div class="invalid-feedback">Password is required</div>
+                    }
+                    @if (submitted && (f['password'].errors && f['password'].errors['minlength'])) {
+                    <div class="invalid-feedback">Password must be at least 6 characters</div>
+                    }
+                    @if (submitted && (f['password'].errors && f['password'].errors['maxlength'])) {
+                    <div class="invalid-feedback">Password must not exceed 40 characters</div>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <input type="password" formControlName="confirmPassword" placeholder="Confirm Password"
+                        class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && (f['confirmPassword'].errors && f['confirmPassword'].errors['required'] || (f['confirmPassword'].errors && f['confirmPassword'].errors['matching'])) }">
+
+                        
+                   
+                        @if (submitted && (f['confirmPassword'].errors && f['confirmPassword'].errors['required'])) {
+                    <div class="invalid-feedback">Confirm Password is required</div>
+                    }
+                    @if (submitted && (f['confirmPassword'].errors && f['confirmPassword'].errors['matching'])) {
+                        <div class="invalid-feedback">Passwords do not match</div>
+                      }
+                      
+                </div>
+                  
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select formControlName="role" id="role" class="form-control">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+
+                <div class="form-group terms">
+                    <input type="checkbox" formControlName="acceptTerms" id="agree" class="form-check-input"
+                        [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors && f['acceptTerms'].errors['required'] }">
+                    <label for="agree" class="form-check-label">I agree to the Terms and Privacy Policies</label>
+                    
+                    <div class="form-group terms">
+                        @if (submitted && (f['acceptTerms'].errors && f['acceptTerms'].errors['required'])) {
+                            <div class="invalid-feedback">You must agree to the terms</div>
+                            }
+                    </div>
+                   
+                </div>
+                
+               
+
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+            <div class="signIn-text-container">
+                <h4>Already have an account?
+                </h4>
+                <h4 class="signIn-text" routerLink="login"> Sign In</h4>
+            </div>
+        </div>
+    </div>
+</div>
