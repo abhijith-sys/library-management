@@ -1,11 +1,18 @@
 <div class="home-container">
-    <div class="home-container-top">
-        <div class="add-button" routerLink="/book-form">
-            <mat-icon class="add-button-icon">add_circle</mat-icon>
-            Add Books
+   
+        <div class="home-container-top">
+            @if(currentuserRole == adminrole ) {
+            <div class="add-button" routerLink="/book-form">
+                <mat-icon class="add-button-icon">add_circle</mat-icon>
+                Add Books
+            </div>
+        }@else{
+            <h1>Books</h1>
+        }
         </div>
-    </div>
-
+    
+    
+    
 
     <div class="home-container-sub">    
         @for (book of bookStore.books(); track book.id) {
@@ -19,7 +26,8 @@
                 <p class="book-info">Availability: <span class="availability">{{ book.available ? 'Available' : 'Not
                         Available' }}</span></p>
                 @if(currentuserRole == adminrole ) {
-                <button class="reserve-button" (click)="editBook(book.id, $event)">Edit</button>
+                <button class="reserve-button" (click)="editBook(book.id, $event)">
+                   Edit</button>
                 }
                 @else{
                 <button class="reserve-button" (click)="borrowBook(book.id, $event)">borrow</button>

@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
+import { AuthService } from '../../service/auth.service';
+import { ADMIN_ROLE } from '../../utils/constants';
 
 @Component({
   selector: 'app-navbar',
@@ -11,11 +13,16 @@ import { SharedModule } from '../../shared/shared.module';
   ]
 })
 export class NavbarComponent {
+  adminrole = ADMIN_ROLE;
   sidenavWidth = 4; // Initial width in em units
-
+  currentuserRole = ""
+  AuthService = inject(AuthService)
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit(): void {
+   
+    this.currentuserRole = this.AuthService.getCurrentUserRole();
+  }
 
   // increase() {
   //   this.sidenavWidth = 15;

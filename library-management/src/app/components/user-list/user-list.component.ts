@@ -1,11 +1,6 @@
 import { Component, ViewChild, ViewEncapsulation, inject } from '@angular/core';
-import { User } from '../../../assets/interface/user.interface';
-import { dummyUsers } from '../../../dummy/duydata';
 import { SharedModule } from '../../shared/shared.module';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-
 import { userListStore } from '../../store/userList.store';
 import { LocalStorageService } from '../../service/localStorage.service';
 
@@ -21,7 +16,7 @@ export class UserListComponent {
   userListStore =inject(userListStore)
   localStorageService = inject(LocalStorageService)
 
-  displayedColumns: string[] = ['id', 'name', 'email', 'active', 'booksTaken', 'booksReturned', 'booksHolding'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'active',"maxBookLimit", 'booksTaken', 'booksReturned', 'booksHolding'];
   
 
 

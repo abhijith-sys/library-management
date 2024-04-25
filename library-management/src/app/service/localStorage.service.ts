@@ -53,14 +53,12 @@ export class LocalStorageService {
 
     setLocalUserList() {
         try {
-            const localUserListData = localStorage.getItem("userList");
+            const localUserListData = localStorage.getItem("userslist");
             if (localUserListData) {
                 const parsedUserListData: User[] = JSON.parse(localUserListData);
-                if (this.isValidUserListData(parsedUserListData)) {
+               
                     this.userListStore.setUsers(parsedUserListData);
-                } else {
-                    console.error("Invalid user list data in local storage.");
-                }
+               
             }
         } catch (error) {
             console.error("Error while setting local user list:", error);

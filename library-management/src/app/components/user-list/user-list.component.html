@@ -23,7 +23,10 @@
       <th mat-header-cell *matHeaderCellDef>Active</th>
       <td mat-cell *matCellDef="let user">{{ user.active ? 'Active' : 'Inactive' }}</td>
     </ng-container>
-
+    <ng-container matColumnDef="maxBookLimit">
+      <th mat-header-cell *matHeaderCellDef>maxBookLimit</th>
+      <td mat-cell *matCellDef="let user">{{ user.maxBookLimit }}</td>
+    </ng-container>
 
     <ng-container matColumnDef="booksTaken">
       <th mat-header-cell *matHeaderCellDef>Books Taken</th>

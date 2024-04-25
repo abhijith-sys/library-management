@@ -13,29 +13,33 @@
         @else{
         <button class="edit-button" (click)="borrowBook(book.id)">borrow</button>
         }
-        <h2>Book History</h2>
-    <table mat-table [dataSource]="book.history" class="mat-elevation-z8">
-        <!-- Define table columns -->
-        <ng-container matColumnDef="userId">
-            <th mat-header-cell *matHeaderCellDef>User ID</th>
-            <td mat-cell *matCellDef="let history">{{ history.userId }}</td>
-        </ng-container>
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
-            <td mat-cell *matCellDef="let history">{{ history.name }}</td>
-        </ng-container>
-        <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef>Action</th>
-            <td mat-cell *matCellDef="let history">{{ history.action }}</td>
-        </ng-container>
-        <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef>Date</th>
-            <td mat-cell *matCellDef="let history">{{ history.date }}</td>
-        </ng-container>
-        <!-- Define header and row templates -->
-        <tr mat-header-row *matHeaderRowDef="historyColumns"></tr>
-        <tr mat-row *matRowDef="let history; columns: historyColumns;"  (click)="redirectToUserDetails( history.userId)"></tr>
-    </table>
+
+        @if(currentuserRole == adminrole ) {
+            <h2>Book History</h2>
+            <table mat-table [dataSource]="book.history" class="mat-elevation-z8">
+                <!-- Define table columns -->
+                <ng-container matColumnDef="userId">
+                    <th mat-header-cell *matHeaderCellDef>User ID</th>
+                    <td mat-cell *matCellDef="let history">{{ history.userId }}</td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                    <td mat-cell *matCellDef="let history">{{ history.name }}</td>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let history">{{ history.action }}</td>
+                </ng-container>
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef>Date</th>
+                    <td mat-cell *matCellDef="let history">{{ history.date }}</td>
+                </ng-container>
+                <!-- Define header and row templates -->
+                <tr mat-header-row *matHeaderRowDef="historyColumns"></tr>
+                <tr mat-row *matRowDef="let history; columns: historyColumns;"  (click)="redirectToUserDetails( history.userId)"></tr>
+            </table>
+        }
+       
     </div>
 
     

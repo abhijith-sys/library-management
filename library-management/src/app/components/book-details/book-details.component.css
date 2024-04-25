@@ -15,10 +15,11 @@
   
   .book-image-container {
     flex: 30%; 
+    
   }
   
   .book-image-container img {
-    min-width: 100%;
+    max-width: 400px;
     height: auto;
     border-radius: 20px;
   }
@@ -26,14 +27,20 @@
   .book-details {
     flex:70%; 
     padding: 0 20px;
+    
+    
+   overflow: hidden;
   }
   
   .book-details h2 {
     margin-top: 0;
+    white-space: wrap; 
+    overflow-wrap: break-word;
   }
   
   .book-details p {
     margin-bottom: 10px;
+    overflow-wrap: break-word;
   }
   
   .edit-button {

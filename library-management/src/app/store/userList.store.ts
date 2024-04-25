@@ -56,8 +56,7 @@ export const userListStore = signalStore(
             return Users().find(user => user.id === id);
         },
         findByEmail(email: String): User | undefined {
-
-            return Users().find(user => user.email === email);
+            return Users().find(user => user.email == email);
         },
       
     })

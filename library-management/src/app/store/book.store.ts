@@ -41,7 +41,7 @@ export const bookStore = signalStore(
             localStorage.setItem("books",JSON.stringify(updatedBooks))
             patchState(store, { books: updatedBooks })
         },
-        findOne(id: string): Book | undefined {
+        findOne(id: String): Book | undefined {
             // Find the book with the given ID
             return books().find(book => book.id === id);
         }

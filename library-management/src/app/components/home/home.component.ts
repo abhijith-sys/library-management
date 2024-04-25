@@ -31,33 +31,44 @@ export class HomeComponent {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.localStorageService.setLocalUser()
     this.localStorageService.setLocalBooks()
+    this.localStorageService.setLocalUserList()
     this.currentuserRole = this.AuthService.getCurrentUserRole();
   }
-  editBook(id: String,event: Event) {
+  editBook(id: String, event: Event) {
     event.stopPropagation();
     // Navigate to the edit form
     this.router.navigate(['/book-form', id]);
   }
-  borrowBook(id: String,event: Event) {
+  borrowBook(id: String, event: Event) {
     event.stopPropagation();
     const userFound = this.userListStore.findByEmail(this.userStore.user().email);
+
     if (userFound) {
-     
+
       const borrowedBooks = userFound.bookHistory.filter(history => history.status === 'Borrowed');
       if (borrowedBooks.length >= userFound.maxBookLimit) {
         alert("borrow limit exceeded")
-   // User cannot borrow more books until the borrowed ones are returned
+        // User cannot borrow more books until the borrowed ones are returned
+      }else{
+        const book = this.bookStore.findOne(id);
+        if(book){
+          const temphistory = { bookId: id, title: book.title, status: "borrowed", takenDate:new Date(), returnedDate: "" };
+          
+        }
+        
+       
+
       }
 
       // this.router.navigate(['/book-form', id]);
+    } else {
+      console.log("user not found")
     }
   }
 
-    bookDetails(id: String): void {
-      console.log('====================================');
-      console.log("details");
-      console.log('====================================');
-      this.router.navigate(['/book-details', id]);
-    }
+  bookDetails(id: String): void {
+    this.router.navigate(['/book-details', id]);
   }
+}

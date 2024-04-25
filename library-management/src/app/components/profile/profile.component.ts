@@ -31,11 +31,13 @@ export class ProfileComponent implements OnInit {
     maxBookLimit: 0,
     role: '0'
   };
-  historyColumns: string[] = ['bookId','title', 'status', 'takenDate',"returnedDate"];
+  historyColumns: string[] = ['bookId', 'title', 'status', 'takenDate', "returnedDate"];
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.localService.setLocalUser()
+    this.localService.setLocalUser() 
+    this.localService.setLocalBooks()
+    this.localService.setLocalUserList()
 
     // Retrieving the userId parameter from the route
     this.route.paramMap.subscribe(params => {
@@ -51,20 +53,28 @@ export class ProfileComponent implements OnInit {
           this.user = result
         }
       } else {
+        const result = this.userListStore.findByEmail(this.usersStore.user().email);
+
         // show the current user details
-        this.user= {
-          id: 0,
-          name: this.usersStore.user().name,
-          email: this.usersStore.user().email,
-          isActive: false,
-          borrowedBooks: 0,
-          returnedBooks: 0,
-          holdingBooks: 0,
-          bookHistory: [],
-          maxBookLimit: 0,
-          role: "0"
-        };
-        console.log('User ID not provided');
+        if (result) {
+       
+          this.user = result
+        } else {
+          this.user = {
+            id: 0,
+            name: this.usersStore.user().name,
+            email: this.usersStore.user().email,
+            isActive: false,
+            borrowedBooks: 0,
+            returnedBooks: 0,
+            holdingBooks: 0,
+            bookHistory: [],
+            maxBookLimit: 1,
+            role: "0"
+          };
+        }
+
+
       }
     });
 
@@ -72,11 +82,17 @@ export class ProfileComponent implements OnInit {
 
   editProfile(): void {
     // Redirect to the profile edit page
-    if (this.userId){
-      this.router.navigate(['/profile-form',this.userId]);
-    }else{
+    if (this.userId) {
+      this.router.navigate(['/profile-form', this.userId]);
+    } else {
       this.router.navigate(['/profile-form']);
     }
-   
+
+  }
+
+  logout() {
+    localStorage.removeItem("user");
+    this.router.navigate(['/']);
+
   }
 }
